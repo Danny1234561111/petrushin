@@ -26,7 +26,7 @@ import kotlin.random.Random
 import android.widget.TextView
 var a: View?=null
 private var lastClickTime: Long = 0
-private val clickDelay: Long = 1000
+private val clickDelay: Long = 1200
 val catViews = mutableListOf<ImageView>()
 var chet: Int = 16
 class MainActivity : AppCompatActivity() {
@@ -40,10 +40,12 @@ class MainActivity : AppCompatActivity() {
         layout.orientation = LinearLayout.VERTICAL
 
 
-        val params = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT)
+        val params = LinearLayout.LayoutParams(250,250)
         params.weight = 1.toFloat() // единичный вес
 
-        val massiv = Array(16) { it }.apply { shuffle(Random(1000)) }
+        val massiv = Array(16) { it }
+        val r = Random(System.currentTimeMillis())
+        massiv.shuffle(r)
 //        for (i in 0..15) {
 //            massiv[i]=i
 //        }
@@ -94,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                 val resourceId = resources.getIdentifier(v.tag.toString(), "drawable", packageName)
                 v.setImageResource(resourceId)
                 countopen += 1
-                delay(1000)
+                delay(1200)
                 if (v.tag == a?.tag) {
                     a?.visibility = View.INVISIBLE
                     v.visibility = View.INVISIBLE
